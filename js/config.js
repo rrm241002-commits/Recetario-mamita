@@ -2,8 +2,8 @@
 // CONFIGURACIÓN — rellena estos dos valores con los tuyos.
 // Los encuentras en Supabase → tu proyecto → Settings → API.
 // ============================================================
-const SUPABASE_URL = "PON_AQUI_TU_SUPABASE_URL";
-const SUPABASE_ANON_KEY = "PON_AQUI_TU_SUPABASE_ANON_KEY";
+const SUPABASE_URL = "https://vpfryomxaplclgzkmlps.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_Cpb37zNmqwLhZRV27YwDQA_xvtf2YUz";
 
 // Nombre del recetario, se muestra en la cabecera de todas las páginas.
 // Cámbialo por lo que quieras, por ejemplo "El Recetario de Mamá".
