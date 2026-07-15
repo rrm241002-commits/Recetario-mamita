@@ -1,0 +1,477 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap");
+
+:root {
+  /* --- Paleta: cuaderno de recetas, papel y especias --- */
+  --color-bg: #f6ecd9;          /* pergamino cálido */
+  --color-bg-card: #fffbf3;     /* ficha de papel más claro */
+  --color-ink: #3b2a1e;         /* café oscuro, texto principal */
+  --color-ink-soft: #7a6650;    /* café claro, texto secundario */
+  --color-accent: #a8432a;      /* pimentón / ladrillo */
+  --color-accent-dark: #7c2f1d;
+  --color-sage: #66754a;        /* verde salvia */
+  --color-sage-bg: #e4e6d3;
+  --color-gold: #b9862f;        /* miel, para favoritos */
+  --color-line: #ddc9a3;        /* líneas tipo cuaderno */
+  --color-danger: #9c3b2c;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Work Sans", system-ui, sans-serif;
+  --font-hand: "Caveat", cursive;
+
+  --radius: 10px;
+  --shadow-card: 0 2px 0 var(--color-line), 0 8px 20px -12px rgba(59, 42, 30, 0.35);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  background-image:
+    linear-gradient(var(--color-line) 1px, transparent 1px);
+  background-size: 100% 2.1em;
+  background-attachment: local;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  min-height: 100vh;
+}
+
+/* La cuadrícula de líneas de "cuaderno" solo tiene sentido detrás del
+   contenido de texto; en páginas de tarjetas la desactivamos. */
+body.sin-lineas { background-image: none; }
+
+a { color: var(--color-accent); }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--color-ink);
+  margin: 0 0 0.3em;
+  font-weight: 600;
+}
+
+button, input, select, textarea { font-family: inherit; font-size: 1rem; }
+
+.contenedor {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+/* ---------- Cabecera ---------- */
+.cabecera {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--color-bg);
+  border-bottom: 2px solid var(--color-line);
+  padding: 16px 20px;
+}
+
+.cabecera-fila {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.marca {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-accent-dark);
+  text-decoration: none;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-right: auto;
+}
+
+.marca span.rotulo {
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  color: var(--color-sage);
+  font-weight: 600;
+}
+
+/* ---------- Botones ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 2px solid var(--color-ink);
+  background: transparent;
+  color: var(--color-ink);
+  padding: 9px 16px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn-principal {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff8ee;
+}
+.btn-principal:hover { background: var(--color-accent-dark); border-color: var(--color-accent-dark); }
+
+.btn-fantasma {
+  border-color: var(--color-line);
+  color: var(--color-ink-soft);
+}
+
+.btn-peligro {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.btn-sm { padding: 6px 12px; font-size: 0.9rem; }
+
+/* ---------- Campos de formulario ---------- */
+.campo { margin-bottom: 18px; }
+.campo label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--color-ink-soft);
+  font-size: 0.92rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.campo input[type="text"],
+.campo input[type="email"],
+.campo input[type="password"],
+.campo input[type="number"],
+.campo select,
+.campo textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid var(--color-line);
+  border-radius: var(--radius);
+  background: var(--color-bg-card);
+  color: var(--color-ink);
+}
+.campo input:focus, .campo select:focus, .campo textarea:focus {
+  outline: 3px solid var(--color-sage-bg);
+  border-color: var(--color-sage);
+}
+.campo textarea { resize: vertical; min-height: 90px; }
+.fila-doble { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 560px) { .fila-doble { grid-template-columns: 1fr; } }
+
+/* ---------- Login ---------- */
+.pantalla-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.tarjeta-login {
+  background: var(--color-bg-card);
+  border: 2px solid var(--color-line);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  padding: 40px 36px;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+}
+.tarjeta-login .marca { justify-content: center; margin: 0 0 4px; font-size: 2rem; }
+.tarjeta-login p.sub { color: var(--color-ink-soft); margin-bottom: 26px; font-family: var(--font-hand); font-size: 1.2rem;}
+.error-login {
+  color: var(--color-danger);
+  font-size: 0.9rem;
+  margin-top: 10px;
+  min-height: 1.2em;
+}
+
+/* ---------- Barra de herramientas del recetario ---------- */
+.barra-herramientas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 26px 0 10px;
+}
+.barra-herramientas input[type="search"] {
+  flex: 1 1 220px;
+  padding: 10px 14px;
+  border: 2px solid var(--color-line);
+  border-radius: 999px;
+  background: var(--color-bg-card);
+}
+.barra-herramientas select {
+  padding: 9px 12px;
+  border: 2px solid var(--color-line);
+  border-radius: 999px;
+  background: var(--color-bg-card);
+}
+.toggle-favoritas {
+  border: 2px solid var(--color-line);
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: var(--color-bg-card);
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+}
+.toggle-favoritas.activo {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  background: #fbf1dc;
+}
+
+/* ---------- Layout con índice alfabético ---------- */
+.diseno-recetario {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 18px;
+  margin-top: 20px;
+}
+@media (max-width: 700px) {
+  .diseno-recetario { grid-template-columns: 1fr; }
+  .indice-alfabetico { display: none; } /* en móvil se usa la barra horizontal */
+  .indice-alfabetico-movil { display: flex !important; }
+}
+
+.indice-alfabetico {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+.indice-alfabetico a {
+  text-decoration: none;
+  text-align: center;
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
+  color: var(--color-line);
+  font-weight: 700;
+  padding: 2px 0;
+}
+.indice-alfabetico a.con-recetas { color: var(--color-accent); }
+.indice-alfabetico a.con-recetas:hover { color: var(--color-accent-dark); }
+
+.indice-alfabetico-movil {
+  display: none;
+  gap: 4px;
+  overflow-x: auto;
+  padding: 8px 2px 14px;
+  border-bottom: 2px dashed var(--color-line);
+  margin-bottom: 6px;
+}
+.indice-alfabetico-movil a {
+  flex: 0 0 auto;
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-line);
+  text-decoration: none;
+  padding: 2px 5px;
+}
+.indice-alfabetico-movil a.con-recetas { color: var(--color-accent); }
+
+/* ---------- Grupos por letra + fichas ---------- */
+.grupo-letra { margin-bottom: 30px; }
+.grupo-letra h2 {
+  font-family: var(--font-hand);
+  font-size: 2rem;
+  color: var(--color-sage);
+  border-bottom: 2px dashed var(--color-line);
+  padding-bottom: 4px;
+  margin-bottom: 14px;
+}
+
+.rejilla-recetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.ficha {
+  background: var(--color-bg-card);
+  border: 2px solid var(--color-line);
+  border-radius: 4px 4px 12px 12px;
+  box-shadow: var(--shadow-card);
+  text-decoration: none;
+  color: var(--color-ink);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.15s ease;
+}
+.ficha:hover { transform: translateY(-3px) rotate(-0.3deg); }
+.ficha::before {
+  /* pequeña muesca perforada arriba, como una ficha real */
+  content: "";
+  position: absolute;
+  top: 0; left: 22px;
+  width: 18px; height: 9px;
+  background: var(--color-bg);
+  border: 2px solid var(--color-line);
+  border-top: none;
+  border-radius: 0 0 9px 9px;
+}
+.ficha-foto {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  background: var(--color-sage-bg);
+  border-bottom: 2px solid var(--color-line);
+}
+.ficha-foto.sin-foto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  color: var(--color-sage);
+  opacity: 0.5;
+}
+.ficha-cuerpo { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.ficha-categoria {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-sage);
+  font-weight: 700;
+}
+.ficha-titulo { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; line-height: 1.2; }
+.ficha-meta { margin-top: auto; display: flex; gap: 12px; font-size: 0.82rem; color: var(--color-ink-soft); }
+.ficha-estrella {
+  position: absolute;
+  top: 10px; right: 10px;
+  font-size: 1.2rem;
+  color: var(--color-gold);
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));
+}
+
+.vacio {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--color-ink-soft);
+}
+.vacio .grande { font-family: var(--font-hand); font-size: 1.6rem; color: var(--color-sage); display:block; margin-bottom: 10px;}
+
+/* ---------- Vista de receta ---------- */
+.receta-cabecera { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; margin-top: 24px;}
+.receta-titulo-bloque .ficha-categoria { margin-bottom: 6px; display:block; }
+.receta-titulo-bloque h1 { font-size: 2.3rem; max-width: 700px; }
+.acciones-receta { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.receta-meta {
+  display: flex;
+  gap: 26px;
+  flex-wrap: wrap;
+  margin: 18px 0 26px;
+  padding: 14px 18px;
+  background: var(--color-bg-card);
+  border: 2px dashed var(--color-line);
+  border-radius: var(--radius);
+}
+.receta-meta div { text-align: center; }
+.receta-meta .etiqueta { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-ink-soft); display:block; }
+.receta-meta .valor { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; }
+
+.receta-foto-principal {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 2px solid var(--color-line);
+  margin-bottom: 30px;
+}
+
+.receta-cuerpo { display: grid; grid-template-columns: 1fr 1.6fr; gap: 40px; }
+@media (max-width: 750px) { .receta-cuerpo { grid-template-columns: 1fr; } }
+
+.bloque-ingredientes h2, .bloque-pasos h2, .bloque-notas h2 {
+  font-family: var(--font-hand);
+  color: var(--color-sage);
+  font-size: 1.7rem;
+  border-bottom: 2px dashed var(--color-line);
+  padding-bottom: 4px;
+}
+.lista-ingredientes { list-style: none; margin: 0; padding: 0; }
+.lista-ingredientes li {
+  padding: 8px 0;
+  border-bottom: 1px dotted var(--color-line);
+  display: flex;
+  gap: 8px;
+}
+.lista-ingredientes li .cant { font-weight: 700; color: var(--color-accent-dark); min-width: 88px; }
+
+.lista-pasos { list-style: none; margin: 0; padding: 0; counter-reset: paso; }
+.lista-pasos li {
+  counter-increment: paso;
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px dotted var(--color-line);
+}
+.lista-pasos li::before {
+  content: counter(paso);
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: #fff8ee;
+  background: var(--color-accent);
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.galeria-extra { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+.galeria-extra img { width: 110px; height: 110px; object-fit: cover; border-radius: 8px; border: 2px solid var(--color-line); }
+
+.bloque-notas { margin-top: 34px; padding: 16px 20px; background: var(--color-sage-bg); border-radius: var(--radius); }
+.bloque-notas p { font-family: var(--font-hand); font-size: 1.15rem; margin: 8px 0 0; white-space: pre-wrap; }
+
+/* ---------- Formulario de edición: ingredientes/pasos dinámicos ---------- */
+.fila-dinamica { display: flex; gap: 8px; margin-bottom: 8px; align-items: center; }
+.fila-dinamica input { flex: 1; }
+.fila-dinamica input.cant-input { flex: 0 0 90px; }
+.fila-dinamica input.unidad-input { flex: 0 0 90px; }
+.quitar-fila {
+  border: none; background: transparent; color: var(--color-danger);
+  font-size: 1.3rem; cursor: pointer; line-height: 1; padding: 4px 8px;
+}
+.subida-foto {
+  border: 2px dashed var(--color-line);
+  border-radius: var(--radius);
+  padding: 18px;
+  text-align: center;
+  background: var(--color-bg-card);
+  cursor: pointer;
+  color: var(--color-ink-soft);
+}
+.previa-foto { max-width: 220px; border-radius: 8px; margin-top: 10px; border: 2px solid var(--color-line); }
+
+/* ---------- Utilidades ---------- */
+.oculto { display: none !important; }
+.cargando { text-align: center; padding: 40px; color: var(--color-ink-soft); font-family: var(--font-hand); font-size: 1.3rem; }
+
+/* ---------- Impresión / exportar PDF ---------- */
+@media print {
+  .cabecera, .acciones-receta, .btn, .indice-alfabetico, .indice-alfabetico-movil,
+  .barra-herramientas, .no-imprimir { display: none !important; }
+  body { background: #fff; }
+  .contenedor { max-width: 100%; padding: 0; }
+  .receta-meta { border: 1px solid #999; }
+  .lista-pasos li::before { background: #333; color: #fff; }
+  a { color: inherit; text-decoration: none; }
+}

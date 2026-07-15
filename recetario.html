@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Recetario</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="sin-lineas">
+
+<header class="cabecera">
+  <div class="cabecera-fila">
+    <a href="recetario.html" class="marca">📖 <span id="nombre-recetario">El Recetario</span> <span class="rotulo">de casa</span></a>
+    <a href="editar.html" class="btn btn-principal">+ Nueva receta</a>
+    <button class="btn btn-fantasma" id="btn-salir">Salir</button>
+  </div>
+</header>
+
+<div class="contenedor">
+
+  <div class="barra-herramientas">
+    <input type="search" id="buscador" placeholder="Buscar por nombre o ingrediente…">
+    <select id="filtro-categoria">
+      <option value="">Todas las categorías</option>
+    </select>
+    <button class="toggle-favoritas" id="toggle-favoritas">★ Solo favoritas</button>
+  </div>
+
+  <div class="indice-alfabetico-movil" id="indice-movil"></div>
+
+  <div class="diseno-recetario">
+    <nav class="indice-alfabetico" id="indice-lateral" aria-label="Índice alfabético"></nav>
+    <div>
+      <div class="cargando" id="cargando">Abriendo el recetario…</div>
+      <div id="contenedor-recetas"></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/recetario.js"></script>
+</body>
+</html>

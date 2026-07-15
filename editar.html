@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editar receta — El Recetario</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="sin-lineas">
+
+<header class="cabecera">
+  <div class="cabecera-fila">
+    <a href="recetario.html" class="marca">📖 <span id="nombre-recetario">El Recetario</span></a>
+    <a href="recetario.html" class="btn btn-fantasma">← Cancelar</a>
+    <button class="btn btn-fantasma" id="btn-salir">Salir</button>
+  </div>
+</header>
+
+<div class="contenedor" style="max-width:760px">
+  <h1 id="titulo-formulario" style="margin-top:24px">Nueva receta</h1>
+
+  <form id="form-receta">
+    <div class="campo">
+      <label for="titulo">Título de la receta</label>
+      <input type="text" id="titulo" required placeholder="Ej: Fabada asturiana">
+    </div>
+
+    <div class="fila-doble">
+      <div class="campo">
+        <label for="categoria">Categoría</label>
+        <input type="text" id="categoria" list="lista-categorias" placeholder="Ej: Repostería" required>
+        <datalist id="lista-categorias"></datalist>
+      </div>
+      <div class="campo">
+        <label for="raciones">Raciones / comensales</label>
+        <input type="text" id="raciones" placeholder="Ej: 4 personas">
+      </div>
+    </div>
+
+    <div class="fila-doble">
+      <div class="campo">
+        <label for="tiempo_prep">Tiempo de preparación</label>
+        <input type="text" id="tiempo_prep" placeholder="Ej: 20 min">
+      </div>
+      <div class="campo">
+        <label for="tiempo_coccion">Tiempo de cocción / horno</label>
+        <input type="text" id="tiempo_coccion" placeholder="Ej: 45 min a 180º">
+      </div>
+    </div>
+
+    <div class="campo">
+      <label>Foto principal</label>
+      <label class="subida-foto" id="etiqueta-foto-principal">
+        📷 Toca para elegir una foto
+        <input type="file" accept="image/*" id="foto_principal" class="oculto">
+      </label>
+      <img id="previa-foto-principal" class="previa-foto oculto">
+    </div>
+
+    <div class="campo">
+      <label>Ingredientes</label>
+      <div id="lista-ingredientes-form"></div>
+      <button type="button" class="btn btn-sm btn-fantasma" id="anadir-ingrediente">+ Añadir ingrediente</button>
+    </div>
+
+    <div class="campo">
+      <label>Procedimiento</label>
+      <div id="lista-pasos-form"></div>
+      <button type="button" class="btn btn-sm btn-fantasma" id="anadir-paso">+ Añadir paso</button>
+    </div>
+
+    <div class="campo">
+      <label>Fotos adicionales del proceso (opcional)</label>
+      <label class="subida-foto" id="etiqueta-fotos-extra">
+        📷 Toca para añadir una o varias fotos
+        <input type="file" accept="image/*" id="fotos_extra" class="oculto" multiple>
+      </label>
+      <div class="galeria-extra" id="previa-fotos-extra"></div>
+    </div>
+
+    <div class="campo">
+      <label for="notas">Notas (trucos, sustituciones, el secreto de la abuela…)</label>
+      <textarea id="notas" placeholder="Cualquier apunte que quieras recordar"></textarea>
+    </div>
+
+    <div class="campo">
+      <label style="display:flex; align-items:center; gap:8px; text-transform:none; font-weight:600;">
+        <input type="checkbox" id="favorita" style="width:auto;"> Marcar como favorita
+      </label>
+    </div>
+
+    <p class="error-login" id="error-formulario"></p>
+
+    <div style="display:flex; gap:12px; margin-top:20px; flex-wrap:wrap;">
+      <button type="submit" class="btn btn-principal" id="btn-guardar">Guardar receta</button>
+      <button type="button" class="btn btn-peligro oculto" id="btn-eliminar">Eliminar receta</button>
+    </div>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/editar.js"></script>
+</body>
+</html>

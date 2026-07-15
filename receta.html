@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Receta — El Recetario</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="cabecera no-imprimir">
+  <div class="cabecera-fila">
+    <a href="recetario.html" class="marca">📖 <span id="nombre-recetario">El Recetario</span></a>
+    <a href="recetario.html" class="btn btn-fantasma">← Volver al recetario</a>
+    <button class="btn btn-fantasma" id="btn-salir">Salir</button>
+  </div>
+</header>
+
+<div class="contenedor">
+  <div class="cargando" id="cargando">Buscando la receta…</div>
+
+  <div id="vista-receta" class="oculto">
+    <div class="receta-cabecera">
+      <div class="receta-titulo-bloque">
+        <span class="ficha-categoria" id="v-categoria"></span>
+        <h1 id="v-titulo"></h1>
+      </div>
+      <div class="acciones-receta no-imprimir">
+        <button class="btn btn-fantasma" id="btn-favorita">★ Favorita</button>
+        <button class="btn btn-fantasma" id="btn-imprimir">🖨 Exportar / Imprimir PDF</button>
+        <a class="btn btn-principal" id="link-editar" href="#">Editar</a>
+      </div>
+    </div>
+
+    <div class="receta-meta">
+      <div><span class="etiqueta">Preparación</span><span class="valor" id="v-prep">—</span></div>
+      <div><span class="etiqueta">Cocción / horno</span><span class="valor" id="v-coccion">—</span></div>
+      <div><span class="etiqueta">Raciones</span><span class="valor" id="v-raciones">—</span></div>
+    </div>
+
+    <img id="v-foto" class="receta-foto-principal oculto" alt="">
+
+    <div class="receta-cuerpo">
+      <div class="bloque-ingredientes">
+        <h2>Ingredientes</h2>
+        <ul class="lista-ingredientes" id="v-ingredientes"></ul>
+      </div>
+      <div class="bloque-pasos">
+        <h2>Procedimiento</h2>
+        <ol class="lista-pasos" id="v-pasos"></ol>
+        <div class="galeria-extra" id="v-galeria"></div>
+      </div>
+    </div>
+
+    <div class="bloque-notas oculto" id="bloque-notas">
+      <h2 style="color:var(--color-ink-soft); font-family:var(--font-body); text-transform:uppercase; font-size:0.8rem; border:none;">Notas</h2>
+      <p id="v-notas"></p>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/receta.js"></script>
+</body>
+</html>
