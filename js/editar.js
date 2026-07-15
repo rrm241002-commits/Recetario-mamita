@@ -218,7 +218,7 @@ async function eliminarReceta() {
     document.getElementById("error-formulario").textContent = "No se pudo eliminar: " + error.message;
     return;
   }
-  window.location.href = "recetario.html";
+  window.location.href = "biblioteca.html";
 }
 
 function escAttr(str) {

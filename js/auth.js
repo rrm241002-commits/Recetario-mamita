@@ -2,7 +2,7 @@ document.title = NOMBRE_RECETARIO;
 
 // Si ya hay sesión abierta, pasa directo al recetario.
 cliente.auth.getSession().then(({ data: { session } }) => {
-  if (session) window.location.href = "recetario.html";
+  if (session) window.location.href = "inicio.html";
 });
 
 const form = document.getElementById("form-login");
@@ -27,5 +27,5 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
-  window.location.href = "recetario.html";
+  window.location.href = "inicio.html";
 });

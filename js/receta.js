@@ -9,7 +9,7 @@ async function iniciar() {
   document.getElementById("btn-salir").addEventListener("click", cerrarSesion);
 
   if (!idReceta) {
-    window.location.href = "recetario.html";
+    window.location.href = "biblioteca.html";
     return;
   }
 
