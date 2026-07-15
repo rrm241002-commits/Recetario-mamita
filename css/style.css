@@ -92,6 +92,11 @@ button, input, select, textarea { font-family: inherit; font-size: 1rem; }
   margin-right: auto;
 }
 
+.logo-icono {
+  height: 30px;
+  width: auto;
+}
+
 .marca span.rotulo {
   font-family: var(--font-hand);
   font-size: 1rem;

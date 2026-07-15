@@ -30,19 +30,19 @@ alter table recetas enable row level security;
 
 create policy "ver recetas si has iniciado sesión"
   on recetas for select
-  using (auth.role() = 'authenticated');
+  using (auth.uid() is not null);
 
 create policy "crear recetas si has iniciado sesión"
   on recetas for insert
-  with check (auth.role() = 'authenticated');
+  with check (auth.uid() is not null);
 
 create policy "editar recetas si has iniciado sesión"
   on recetas for update
-  using (auth.role() = 'authenticated');
+  using (auth.uid() is not null);
 
 create policy "borrar recetas si has iniciado sesión"
   on recetas for delete
-  using (auth.role() = 'authenticated');
+  using (auth.uid() is not null);
 
 -- Mantiene "actualizado_en" al día automáticamente en cada edición
 create or replace function actualizar_fecha_edicion()

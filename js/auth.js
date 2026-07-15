@@ -1,4 +1,3 @@
-document.getElementById("nombre-recetario").textContent = NOMBRE_RECETARIO;
 document.title = NOMBRE_RECETARIO;
 
 // Si ya hay sesión abierta, pasa directo al recetario.
