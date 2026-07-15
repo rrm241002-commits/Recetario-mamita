@@ -6,6 +6,7 @@ async function iniciar() {
   if (!sesion) return;
 
   document.getElementById("nombre-recetario").textContent = NOMBRE_RECETARIO;
+  document.getElementById("pie-nombre-recetario").textContent = NOMBRE_RECETARIO;
   document.getElementById("btn-salir").addEventListener("click", cerrarSesion);
 
   if (!idReceta) {
