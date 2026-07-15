@@ -67,8 +67,9 @@ async function iniciar() {
   }
 
   const btnFav = document.getElementById("btn-favorita");
+  const textoFav = btnFav.querySelector("svg").outerHTML + " ";
   const actualizarBotonFav = () => {
-    btnFav.textContent = r.favorita ? "★ Quitar de favoritas" : "★ Marcar favorita";
+    btnFav.innerHTML = textoFav + (r.favorita ? "Quitar de favoritas" : "Favorita");
     btnFav.classList.toggle("activo", r.favorita);
   };
   actualizarBotonFav();

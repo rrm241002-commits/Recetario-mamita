@@ -7,52 +7,53 @@
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="sin-lineas">
+<body>
 
 <header class="cabecera">
   <div class="cabecera-fila">
     <a href="recetario.html" class="marca"><img src="assets/logo.png" class="logo-icono" alt=""><span id="nombre-recetario">El Recetario</span></a>
-    <a href="recetario.html" class="btn btn-fantasma">← Cancelar</a>
+    <a href="recetario.html" class="btn btn-fantasma">Cancelar</a>
     <button class="btn btn-fantasma" id="btn-salir">Salir</button>
   </div>
 </header>
 
 <div class="contenedor" style="max-width:760px">
-  <h1 id="titulo-formulario" style="margin-top:24px">Nueva receta</h1>
+  <h1 id="titulo-formulario" style="margin-top:26px">Nueva receta</h1>
 
   <form id="form-receta">
     <div class="campo">
-      <label for="titulo">Título de la receta</label>
-      <input type="text" id="titulo" required placeholder="Ej: Fabada asturiana">
+      <label for="titulo">Título</label>
+      <input type="text" id="titulo" required placeholder="Título de la receta">
     </div>
 
     <div class="fila-doble">
       <div class="campo">
         <label for="categoria">Categoría</label>
-        <input type="text" id="categoria" list="lista-categorias" placeholder="Ej: Repostería" required>
+        <input type="text" id="categoria" list="lista-categorias" placeholder="Categoría" required>
         <datalist id="lista-categorias"></datalist>
       </div>
       <div class="campo">
-        <label for="raciones">Raciones / comensales</label>
-        <input type="text" id="raciones" placeholder="Ej: 4 personas">
+        <label for="raciones">Raciones</label>
+        <input type="text" id="raciones" placeholder="Raciones o comensales">
       </div>
     </div>
 
     <div class="fila-doble">
       <div class="campo">
-        <label for="tiempo_prep">Tiempo de preparación</label>
-        <input type="text" id="tiempo_prep" placeholder="Ej: 20 min">
+        <label for="tiempo_prep">Preparación</label>
+        <input type="text" id="tiempo_prep" placeholder="Tiempo de preparación">
       </div>
       <div class="campo">
-        <label for="tiempo_coccion">Tiempo de cocción / horno</label>
-        <input type="text" id="tiempo_coccion" placeholder="Ej: 45 min a 180º">
+        <label for="tiempo_coccion">Cocción / horno</label>
+        <input type="text" id="tiempo_coccion" placeholder="Tiempo de cocción u horno">
       </div>
     </div>
 
     <div class="campo">
       <label>Foto principal</label>
       <label class="subida-foto" id="etiqueta-foto-principal">
-        📷 Toca para elegir una foto
+        <svg class="icono" viewBox="0 0 24 24"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13" r="3.5"/></svg>
+        Elegir foto
         <input type="file" accept="image/*" id="foto_principal" class="oculto">
       </label>
       <img id="previa-foto-principal" class="previa-foto oculto">
@@ -71,17 +72,18 @@
     </div>
 
     <div class="campo">
-      <label>Fotos adicionales del proceso (opcional)</label>
+      <label>Fotos adicionales (opcional)</label>
       <label class="subida-foto" id="etiqueta-fotos-extra">
-        📷 Toca para añadir una o varias fotos
+        <svg class="icono" viewBox="0 0 24 24"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13" r="3.5"/></svg>
+        Añadir fotos
         <input type="file" accept="image/*" id="fotos_extra" class="oculto" multiple>
       </label>
       <div class="galeria-extra" id="previa-fotos-extra"></div>
     </div>
 
     <div class="campo">
-      <label for="notas">Notas (trucos, sustituciones, el secreto de la abuela…)</label>
-      <textarea id="notas" placeholder="Cualquier apunte que quieras recordar"></textarea>
+      <label for="notas">Notas</label>
+      <textarea id="notas" placeholder="Trucos, sustituciones, cualquier apunte"></textarea>
     </div>
 
     <div class="campo">
@@ -93,8 +95,8 @@
     <p class="error-login" id="error-formulario"></p>
 
     <div style="display:flex; gap:12px; margin-top:20px; flex-wrap:wrap;">
-      <button type="submit" class="btn btn-principal" id="btn-guardar">Guardar receta</button>
-      <button type="button" class="btn btn-peligro oculto" id="btn-eliminar">Eliminar receta</button>
+      <button type="submit" class="btn btn-principal" id="btn-guardar">Guardar</button>
+      <button type="button" class="btn btn-peligro oculto" id="btn-eliminar">Eliminar</button>
     </div>
   </form>
 </div>

@@ -7,11 +7,11 @@
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="sin-lineas">
+<body>
 
 <header class="cabecera">
   <div class="cabecera-fila">
-    <a href="recetario.html" class="marca"><img src="assets/logo.png" class="logo-icono" alt=""><span id="nombre-recetario">El Recetario</span> <span class="rotulo">de casa</span></a>
+    <a href="recetario.html" class="marca"><img src="assets/logo.png" class="logo-icono" alt=""><span id="nombre-recetario">El Recetario</span></a>
     <a href="editar.html" class="btn btn-principal">+ Nueva receta</a>
     <button class="btn btn-fantasma" id="btn-salir">Salir</button>
   </div>
@@ -19,23 +19,39 @@
 
 <div class="contenedor">
 
-  <div class="barra-herramientas">
-    <input type="search" id="buscador" placeholder="Buscar por nombre o ingrediente…">
-    <select id="filtro-categoria">
-      <option value="">Todas las categorías</option>
-    </select>
-    <button class="toggle-favoritas" id="toggle-favoritas">★ Solo favoritas</button>
-  </div>
-
-  <div class="indice-alfabetico-movil" id="indice-movil"></div>
-
-  <div class="diseno-recetario">
-    <nav class="indice-alfabetico" id="indice-lateral" aria-label="Índice alfabético"></nav>
-    <div>
-      <div class="cargando" id="cargando">Abriendo el recetario…</div>
-      <div id="contenedor-recetas"></div>
+  <section class="seccion oculto" id="seccion-recientes">
+    <div class="seccion-cabecera">
+      <span class="eyebrow">Últimos cambios</span>
     </div>
-  </div>
+    <div class="franja-recientes" id="franja-recientes"></div>
+  </section>
+
+  <section class="seccion">
+    <div class="seccion-cabecera">
+      <h2>Todas las recetas</h2>
+    </div>
+
+    <div class="barra-herramientas">
+      <input type="search" id="buscador" placeholder="Buscar por nombre o ingrediente">
+      <select id="filtro-categoria">
+        <option value="">Todas las categorías</option>
+      </select>
+      <button class="toggle-favoritas" id="toggle-favoritas">
+        <svg class="icono" viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1L6.6 19.3l1.3-6-4.6-4.1 6.1-.6Z"/></svg>
+        Favoritas
+      </button>
+    </div>
+
+    <div class="indice-alfabetico-movil" id="indice-movil"></div>
+
+    <div class="diseno-recetario">
+      <nav class="indice-alfabetico" id="indice-lateral" aria-label="Índice alfabético"></nav>
+      <div>
+        <div class="cargando" id="cargando">Cargando…</div>
+        <div id="contenedor-recetas"></div>
+      </div>
+    </div>
+  </section>
 
 </div>
 

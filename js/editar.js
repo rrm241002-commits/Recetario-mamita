@@ -43,6 +43,8 @@ async function cargarCategoriasExistentes() {
   });
 }
 
+const ICONO_QUITAR = '<svg class="icono" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+
 function crearFilaIngrediente(valores = {}) {
   const cont = document.getElementById("lista-ingredientes-form");
   const fila = document.createElement("div");
@@ -51,7 +53,7 @@ function crearFilaIngrediente(valores = {}) {
     <input type="text" class="cant-input" placeholder="Cantidad" value="${escAttr(valores.cantidad)}">
     <input type="text" class="unidad-input" placeholder="Unidad" value="${escAttr(valores.unidad)}">
     <input type="text" class="nombre-input" placeholder="Ingrediente" value="${escAttr(valores.nombre)}">
-    <button type="button" class="quitar-fila" title="Quitar">✕</button>
+    <button type="button" class="quitar-fila" title="Quitar">${ICONO_QUITAR}</button>
   `;
   fila.querySelector(".quitar-fila").addEventListener("click", () => fila.remove());
   cont.appendChild(fila);
@@ -62,8 +64,8 @@ function crearFilaPaso(valor = "") {
   const fila = document.createElement("div");
   fila.className = "fila-dinamica";
   fila.innerHTML = `
-    <textarea class="paso-input" rows="2" placeholder="Describe este paso…" style="flex:1; padding:10px 12px; border:2px solid var(--color-line); border-radius:10px; background:var(--color-bg-card);">${escHTML(valor)}</textarea>
-    <button type="button" class="quitar-fila" title="Quitar">✕</button>
+    <textarea class="paso-input" rows="2" placeholder="Describe este paso">${escHTML(valor)}</textarea>
+    <button type="button" class="quitar-fila" title="Quitar">${ICONO_QUITAR}</button>
   `;
   fila.querySelector(".quitar-fila").addEventListener("click", () => fila.remove());
   cont.appendChild(fila);

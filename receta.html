@@ -12,13 +12,13 @@
 <header class="cabecera no-imprimir">
   <div class="cabecera-fila">
     <a href="recetario.html" class="marca"><img src="assets/logo.png" class="logo-icono" alt=""><span id="nombre-recetario">El Recetario</span></a>
-    <a href="recetario.html" class="btn btn-fantasma">← Volver al recetario</a>
+    <a href="recetario.html" class="btn btn-fantasma">Volver</a>
     <button class="btn btn-fantasma" id="btn-salir">Salir</button>
   </div>
 </header>
 
 <div class="contenedor">
-  <div class="cargando" id="cargando">Buscando la receta…</div>
+  <div class="cargando" id="cargando">Cargando…</div>
 
   <div id="vista-receta" class="oculto">
     <div class="receta-cabecera">
@@ -27,8 +27,14 @@
         <h1 id="v-titulo"></h1>
       </div>
       <div class="acciones-receta no-imprimir">
-        <button class="btn btn-fantasma" id="btn-favorita">★ Favorita</button>
-        <button class="btn btn-fantasma" id="btn-imprimir">🖨 Exportar / Imprimir PDF</button>
+        <button class="btn btn-fantasma" id="btn-favorita">
+          <svg class="icono" viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1L6.6 19.3l1.3-6-4.6-4.1 6.1-.6Z"/></svg>
+          Favorita
+        </button>
+        <button class="btn btn-fantasma" id="btn-imprimir">
+          <svg class="icono" viewBox="0 0 24 24"><path d="M6 9V3h12v6"/><rect x="4" y="9" width="16" height="8" rx="1.5"/><path d="M6 14h12v7H6z"/></svg>
+          Exportar PDF
+        </button>
         <a class="btn btn-principal" id="link-editar" href="#">Editar</a>
       </div>
     </div>
@@ -54,7 +60,7 @@
     </div>
 
     <div class="bloque-notas oculto" id="bloque-notas">
-      <h2 style="color:var(--color-ink-soft); font-family:var(--font-body); text-transform:uppercase; font-size:0.8rem; border:none;">Notas</h2>
+      <h2>Notas</h2>
       <p id="v-notas"></p>
     </div>
   </div>
