@@ -169,12 +169,20 @@ async function guardarReceta(e) {
   try {
     let urlFotoPrincipal = fotoPrincipalActualURL;
     if (fotoPrincipalNueva) {
-      urlFotoPrincipal = await subirFoto(fotoPrincipalNueva);
+      try {
+        urlFotoPrincipal = await subirFoto(fotoPrincipalNueva);
+      } catch (err) {
+        throw new Error("Al subir la foto principal: " + err.message);
+      }
     }
 
     let urlsFotosExtra = fotosExtraActuales.slice();
     for (const file of fotosExtraNuevas) {
-      urlsFotosExtra.push(await subirFoto(file));
+      try {
+        urlsFotosExtra.push(await subirFoto(file));
+      } catch (err) {
+        throw new Error("Al subir una foto adicional: " + err.message);
+      }
     }
 
     const registro = {
@@ -194,18 +202,19 @@ async function guardarReceta(e) {
     let idFinal = idEditar;
     if (idEditar) {
       const { error } = await cliente.from("recetas").update(registro).eq("id", idEditar);
-      if (error) throw error;
+      if (error) throw new Error("Al guardar los datos de la receta: " + error.message);
     } else {
       const { data: sesionData } = await cliente.auth.getUser();
       registro.creado_por = sesionData.user.id;
       const { data, error } = await cliente.from("recetas").insert(registro).select().single();
-      if (error) throw error;
+      if (error) throw new Error("Al guardar los datos de la receta: " + error.message);
       idFinal = data.id;
     }
 
     window.location.href = "receta.html?id=" + idFinal;
   } catch (err) {
-    errorEl.textContent = "No se pudo guardar: " + err.message;
+    console.error(err);
+    errorEl.textContent = "No se pudo guardar. " + err.message;
     btn.disabled = false;
     btn.textContent = "Guardar receta";
   }
